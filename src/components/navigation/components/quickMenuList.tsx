@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 interface Props {
-  imageSrc: string;
+  imageSrc: URL;
   hrefLink: string;
   menuTitle: string;
 }
@@ -40,6 +40,7 @@ const QuickMenuListWrapper = styled.li`
     }
 
     span {
+      margin: 0;
       vertical-align: top;
       line-height: 1.8;
     }

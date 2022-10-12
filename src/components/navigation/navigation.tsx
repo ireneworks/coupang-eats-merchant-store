@@ -42,7 +42,7 @@ export default function Navigation() {
             imageSrc={NoticeIcon}
             hrefLink="#"
             menuTitle="광고관리"
-            isNew={false}
+            isNew={true}
           />
           <MenuList
             imageSrc={PromotionIcon}
@@ -63,7 +63,7 @@ export default function Navigation() {
             <ul>
               <QuickMenuList
                 imageSrc={ComputerIcon}
-                hrefLink="#"
+                hrefLink="https://play.google.com/store/apps/details?id=com.coupang.mobile.eats.merchant&hl=ko"
                 menuTitle="휴대폰 앱 설치"
               />
               <QuickMenuList
@@ -78,12 +78,12 @@ export default function Navigation() {
             <ul>
               <QuickMenuList
                 imageSrc={ComputerIcon}
-                hrefLink="#"
+                hrefLink="https://eats.coupang.com/hc/ko/sections/900000801146"
                 menuTitle="약관 및 정책"
               />
               <QuickMenuList
                 imageSrc={ComputerIcon}
-                hrefLink="#"
+                hrefLink="https://store.coupangeats.com/resources/20220929090527/files/Merchant%20FAQs.pdf"
                 menuTitle="FAQ 보기"
               />
             </ul>
@@ -124,7 +124,7 @@ const MenuWrapper = styled.ul`
 `;
 
 const QuickMenuWrapper = styled.div`
-  margin: 32px 20px 0 20px;
+  margin: 32px 20px;
 
   div {
     margin-bottom: 32px;

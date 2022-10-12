@@ -1,3 +1,3 @@
 export default function Home() {
-  return <>홈이다.</>;
+  return <>ATEEZ 짱이얌</>;
 }
