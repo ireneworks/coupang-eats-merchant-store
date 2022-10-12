@@ -1,18 +1,24 @@
 import styled, { css } from "styled-components";
+import { useLocation } from "react-router-dom";
 
 interface Props {
-  imageSrc: URL;
+  disabledIconUrl: string;
+  activeIconUrl?: string;
   hrefLink: string;
   menuTitle: string;
   isNew: boolean;
 }
 
 export default function MenuList({
-  imageSrc,
+  disabledIconUrl,
+  activeIconUrl,
   hrefLink,
   menuTitle,
   isNew,
 }: Props) {
+  const location = useLocation();
+  const isLinkActive = hrefLink === location.pathname;
+  const icon = isLinkActive ? activeIconUrl : disabledIconUrl;
   const Notification = styled.div`
     position: absolute;
     top: -8px;
@@ -35,44 +41,46 @@ export default function MenuList({
       `;
     }}
   `;
+  const ListWrapper = styled.li`
+    a {
+      display: block;
+      width: 100%;
+      padding: 15px 25px;
+      box-sizing: border-box;
+      text-decoration-line: none;
+      font-size: 16px;
+      color: #111111;
+      font-weight: 300;
+      border-left: 2px solid rgba(22, 131, 80, 0);
+
+      ${() => {
+        if (isLinkActive) {
+          return css`
+            color: rgb(22, 131, 80);
+            font-weight: 700;
+            border-left: 2px solid rgba(22, 131, 80, 1);
+          `;
+        }
+      }}
+      span {
+        vertical-align: top;
+        line-height: 1.5;
+      }
+    }
+  `;
 
   return (
     <ListWrapper>
       <a href={`${hrefLink}`}>
         <IconWrapper>
           <Notification />
-          <img src={`${imageSrc}`} />
+          <img src={icon} />
         </IconWrapper>
         <span>{menuTitle}</span>
       </a>
     </ListWrapper>
   );
 }
-
-const ListWrapper = styled.li`
-  a {
-    display: block;
-    width: 100%;
-    padding: 15px 25px;
-    box-sizing: border-box;
-    text-decoration-line: none;
-    font-size: 16px;
-    color: #111111;
-    font-weight: 300;
-    border-left: 2px solid rgba(22, 131, 80, 0);
-
-    span {
-      vertical-align: top;
-      line-height: 1.5;
-    }
-  }
-
-  :active {
-    color: rgb(22, 131, 80);
-    font-weight: 700;
-    border-left: 2px solid rgba(22, 131, 80, 1);
-  }
-`;
 
 const IconWrapper = styled.div`
   position: relative;

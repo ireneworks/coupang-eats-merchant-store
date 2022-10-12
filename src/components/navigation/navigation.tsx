@@ -6,7 +6,9 @@ import Logo from "./assets/logo.png";
 // @ts-ignore
 import NoticeIcon from "./assets/icon-notice-off@2x.png";
 // @ts-ignore
-import PromotionIcon from "./assets/icon_promotion_off.png";
+import PromotionOffIcon from "./assets/icon_promotion_off.png";
+// @ts-ignore
+import PromotionOnIcon from "./assets/icon_promotion_on.png";
 // @ts-ignore
 import ComputerIcon from "./assets/icon-computer.png";
 
@@ -21,37 +23,38 @@ export default function Navigation() {
       <div>
         <MenuWrapper>
           <MenuList
-            imageSrc={NoticeIcon}
+            disabledIconUrl={NoticeIcon}
             hrefLink="#"
             menuTitle="공지사항"
             isNew={false}
           />
           <MenuList
-            imageSrc={NoticeIcon}
+            disabledIconUrl={NoticeIcon}
             hrefLink="#"
             menuTitle="매출관리"
             isNew={false}
           />
           <MenuList
-            imageSrc={NoticeIcon}
+            disabledIconUrl={NoticeIcon}
             hrefLink="#"
             menuTitle="정산관리"
             isNew={false}
           />
           <MenuList
-            imageSrc={NoticeIcon}
+            disabledIconUrl={NoticeIcon}
             hrefLink="#"
             menuTitle="광고관리"
             isNew={true}
           />
           <MenuList
-            imageSrc={PromotionIcon}
+            disabledIconUrl={PromotionOffIcon}
+            activeIconUrl={PromotionOnIcon}
             hrefLink="/merchant/management/coupons/"
             menuTitle="쿠폰관리"
             isNew={false}
           />
           <MenuList
-            imageSrc={NoticeIcon}
+            disabledIconUrl={NoticeIcon}
             hrefLink="#"
             menuTitle="리뷰관리"
             isNew={false}

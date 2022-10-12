@@ -5,7 +5,7 @@ interface Props {
   children: ReactNode;
 }
 
-export default function Layout({ children }: Props) {
+export default function BodyLayout({ children }: Props) {
   return <Section>{children}</Section>;
 }
 
