@@ -11,6 +11,7 @@ import PromotionOffIcon from "./assets/icon_promotion_off.png";
 import PromotionOnIcon from "./assets/icon_promotion_on.png";
 // @ts-ignore
 import ComputerIcon from "./assets/icon-computer.png";
+import { mobile } from "../styles/devices";
 
 export default function Navigation() {
   return (
@@ -107,6 +108,9 @@ const Wrapper = styled.nav`
   background: #ffffff;
   box-shadow: rgb(0 0 0 / 15%) 1px 0px 3px 0px;
   overflow: scroll;
+  @media screen and (max-width: ${mobile}) {
+    transform: translateX(-100vw);
+  }
 `;
 
 const LogoWrapper = styled.div`

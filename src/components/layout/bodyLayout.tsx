@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { ReactNode } from "react";
+import { mobile } from "../styles/devices";
 
 interface Props {
   children: ReactNode;
@@ -15,4 +16,7 @@ const Section = styled.div`
   margin: 0;
   padding-left: 215px;
   box-sizing: border-box;
+  @media screen and (max-width: ${mobile}) {
+    padding-left: 0;
+  }
 `;
