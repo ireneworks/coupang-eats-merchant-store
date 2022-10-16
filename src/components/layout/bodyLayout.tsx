@@ -7,15 +7,17 @@ interface Props {
 }
 
 export default function BodyLayout({ children }: Props) {
-  return <Section>{children}</Section>;
+  return <Body>{children}</Body>;
 }
 
-const Section = styled.div`
+const Body = styled.div`
   display: block;
   height: 100%;
   margin: 0;
   padding-left: 215px;
   box-sizing: border-box;
+  font-family: "Noto Sans CJK KR";
+  letter-spacing: -0.2px;
   @media screen and (max-width: ${mobile}) {
     padding-left: 0;
   }

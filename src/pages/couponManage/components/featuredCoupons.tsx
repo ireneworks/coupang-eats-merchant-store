@@ -13,6 +13,7 @@ export default function FeaturedCoupons({ rating, amount, isLastUnit }: Props) {
   const [modal, setModal] = useState(false);
   const CouponWrapper = styled.div`
     margin-right: ${() => (isLastUnit ? 0 : "25px")};
+    min-width: 258px;
   `;
 
   return (
@@ -39,12 +40,12 @@ export default function FeaturedCoupons({ rating, amount, isLastUnit }: Props) {
 const CouponBottomWrapper = styled.div`
   height: 40px;
   margin-top: -1px;
-  padding: 5px 20px;
   text-align: center;
   background: rgb(248, 248, 248);
   border: 1px solid rgb(221, 221, 221);
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  box-sizing: border-box;
 
   button {
     width: 100%;
@@ -53,6 +54,8 @@ const CouponBottomWrapper = styled.div`
     background: none;
     color: #555555;
     font-size: 14px;
+    font-weight: 500;
+    vertical-align: top;
   }
 `;
 
@@ -110,10 +113,9 @@ const CouponBadgeWrapper = styled.div`
 
 const CouponTopWrapper = styled.div`
   position: relative;
-  width: 258px;
   background: #ffffff;
   padding: 24px;
   border: 1px solid rgb(221, 221, 221);
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 `;
