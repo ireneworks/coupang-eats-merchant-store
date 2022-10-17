@@ -1,15 +1,10 @@
 import styled from "styled-components";
 import MenuList from "./components/menuList";
 import QuickMenuList from "./components/quickMenuList";
-// @ts-ignore
 import Logo from "./assets/logo.png";
-// @ts-ignore
 import NoticeIcon from "./assets/icon-notice-off@2x.png";
-// @ts-ignore
 import PromotionOffIcon from "./assets/icon_promotion_off.png";
-// @ts-ignore
 import PromotionOnIcon from "./assets/icon_promotion_on.png";
-// @ts-ignore
 import ComputerIcon from "./assets/icon-computer.png";
 import { mobile } from "../styles/devices";
 

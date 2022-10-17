@@ -8,19 +8,15 @@ export default function PageFooter() {
         <span>
           <a href="#">쿠팡이츠 서비스 이용약관</a>
         </span>
-        <Divider />
         <span>
           <a href="#">쿠팡이츠 부속약관</a>
         </span>
-        <Divider />
         <span>
           <a href="#">쿠팡페이 전자금융거래약관</a>
         </span>
-        <Divider />
         <span>
           <a href="#">쿠팡개인정보 처리방침</a>
         </span>
-        <Divider />
         <span>
           <a href="#">쿠팡이츠 서비스요금 안내</a>
         </span>
@@ -75,6 +71,27 @@ const ShortCut = styled.div`
   margin-bottom: 11px;
   line-height: 25px;
   word-break: keep-all;
+
+  span {
+    position: relative;
+    padding-right: 8px;
+    margin-right: 8px;
+
+    &::after {
+      display: block;
+      width: 1px;
+      height: 8px;
+      position: absolute;
+      right: 0;
+      top: 6px;
+      background: darkred;
+      content: "";
+    }
+
+    &:last-child::after {
+      display: none;
+    }
+  }
 
   a {
     text-decoration-line: none;

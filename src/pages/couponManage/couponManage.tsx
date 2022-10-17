@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { useState } from "react"; // @ts-ignore
 import ChevronIcon from "./assets/bx-chevron-down.svg";
 import IssueCouponModal from "./components/issueCouponModal";
@@ -25,74 +25,9 @@ export default function CouponManage() {
     centerMode: true,
     centerPadding: "0",
     arrows: false,
+    dotsClass: "test",
     responsive: [],
   };
-
-  const Dropdown = styled.div`
-    button {
-      cursor: pointer;
-      position: relative;
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-      height: auto;
-      padding: 16px 30px 16px 15px;
-      box-sizing: border-box;
-      border: 1px solid rgb(206, 212, 218);
-      border-radius: 0;
-      background: #ffffff;
-      font-size: 16px;
-      color: #111111;
-    }
-
-    ul {
-      ${() => {
-        if (!dropdown) {
-          return css`
-            display: none;
-          `;
-        }
-      }}
-      position: absolute;
-      width: 100%;
-      max-height: 300px;
-      margin: 0;
-      padding: 0;
-      border-width: 0 1px 1px 1px;
-      border-style: none solid solid;
-      border-left: rgb(221, 221, 221);
-      border-right: rgb(221, 221, 221);
-      border-bottom: rgb(221, 221, 221);
-      border-radius: 0 3px 3px 3px;
-      list-style: none;
-      font-size: 14px;
-      color: #111111;
-      z-index: 10;
-
-      li {
-        padding: 14px 16px;
-        background: #ffffff;
-
-        :hover {
-          background: rgb(231, 248, 240);
-          transition: all 0.2s ease 0s;
-        }
-      }
-    }
-  `;
-  const FeaturedCouponsButton = styled.img`
-    transition: all 0.2s ease 0s;
-    ${() => {
-      if (featuredCoupons) {
-        return css`
-          transform: rotate(180deg);
-        `;
-        return css`
-          transform: rotate(0deg);
-        `;
-      }
-    }}
-  `;
 
   return (
     <>
@@ -104,7 +39,7 @@ export default function CouponManage() {
               <span>쿠폰 관리</span>
               <button onClick={() => setModal(!modal)}>쿠폰 발행하기</button>
             </PageTitle>
-            <Dropdown>
+            <Dropdown dropDown={dropdown}>
               <button onClick={() => setDropdown(!dropdown)}>
                 <span>전체</span>
                 <span>열기</span>
@@ -145,7 +80,10 @@ export default function CouponManage() {
                   >
                     {featuredCoupons ? "접기" : "펼치기"}
                   </span>
-                  <FeaturedCouponsButton src={ChevronIcon} />
+                  <FeaturedCouponsButton
+                    src={ChevronIcon}
+                    featuredCoupons={featuredCoupons}
+                  />
                 </div>
               </CouponTitleWrapper>
               <Coupons>
@@ -210,6 +148,60 @@ export default function CouponManage() {
     </>
   );
 }
+
+const Dropdown = styled.div<{ dropDown: boolean }>`
+  position: relative;
+
+  button {
+    cursor: pointer;
+
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+    padding: 16px 30px 16px 15px;
+    box-sizing: border-box;
+    border: 1px solid rgb(206, 212, 218);
+    border-radius: 0;
+    background: #ffffff;
+    font-size: 16px;
+    color: #111111;
+  }
+
+  ul {
+    display: ${(props) => (props.dropDown ? "none" : "block")};
+    position: absolute;
+    width: 100%;
+    max-height: 300px;
+    margin: 0;
+    padding: 0;
+    border: 1px solid black;
+    border-radius: 0 3px 3px 3px;
+    list-style: none;
+    font-size: 14px;
+    color: #111111;
+    z-index: 10;
+    box-sizing: border-box;
+
+    li {
+      padding: 14px 16px;
+      background: #ffffff;
+
+      :hover {
+        background: rgb(231, 248, 240);
+        transition: all 0.2s ease 0s;
+      }
+    }
+  }
+
+
+}
+`;
+const FeaturedCouponsButton = styled.img<{ featuredCoupons: boolean }>`
+  transition: all 0.2s ease 0s;
+  transform: ${(props) =>
+    props.featuredCoupons ? "rotate(180deg)" : "rotate(0deg)"};
+`;
 
 const Main = styled.main`
   display: flex;
@@ -314,6 +306,10 @@ const ImageSlider = styled.div`
 
 const SliderWrapper = styled(Slider)`
   width: 600px;
+
+  .test {
+    bottom: 30px;
+  }
 `;
 
 const FeaturedCoupon = styled.div`

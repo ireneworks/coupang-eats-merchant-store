@@ -2,20 +2,14 @@
 import ProfileIcon from "../layout/assets/icon-profile.png";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
 
 export default function PageHeader() {
   const navigate = useNavigate();
-  const [viewWidth, setViewWidth] = useState(window.innerWidth);
-  //TODO resize 기능으로 변경
-  useEffect(() => {
-    setViewWidth(window.innerWidth);
-  }, [window.innerWidth]);
 
   return (
     <HeaderWrapper>
-      {viewWidth > 767 && <ToBackButton onClick={() => navigate(-1)} />}
-      {viewWidth < 768 && <HamburgerMenu />}
+      <ToBackButton onClick={() => navigate(-1)} />
+      <HamburgerMenu />
       <RightSide>
         <div>
           <img src={ProfileIcon} />
@@ -41,17 +35,27 @@ const HeaderWrapper = styled.header`
 `;
 
 const ToBackButton = styled.div`
+  display: none;
   width: 32px;
   height: 32px;
   border: 1px solid #888888;
   border-radius: 8px;
+
+  @media screen and (min-width: 767px) {
+    display: block;
+  }
 `;
 
 const HamburgerMenu = styled.div`
+  display: block;
   width: 32px;
   height: 32px;
   background: #168350;
   border-radius: 28px;
+
+  @media screen and (min-width: 767px) {
+    display: none;
+  }
 `;
 
 const RightSide = styled.div`
