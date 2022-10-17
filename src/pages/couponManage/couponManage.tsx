@@ -21,7 +21,7 @@ export default function CouponManage() {
     slidesToScroll: 1,
     variableWidth: true,
     autoplay: true,
-    autoplaySpeed: 4000,
+    autoplaySpeed: 3000,
     centerMode: true,
     centerPadding: "0",
     arrows: false,
@@ -30,6 +30,7 @@ export default function CouponManage() {
 
   const Dropdown = styled.div`
     button {
+      cursor: pointer;
       position: relative;
       display: flex;
       justify-content: space-between;
@@ -95,7 +96,7 @@ export default function CouponManage() {
 
   return (
     <>
-      {modal && <IssueCouponModal isModalOn={modal} />}
+      {modal && <IssueCouponModal isModalOn={modal} setModal={setModal} />}
       <Main>
         <div className="section">
           <div className="sectionWrapper">
@@ -290,6 +291,7 @@ const PageTitle = styled.div`
   }
 
   button {
+    cursor: pointer;
     width: 122px;
     height: 40px;
     background: #168350;
