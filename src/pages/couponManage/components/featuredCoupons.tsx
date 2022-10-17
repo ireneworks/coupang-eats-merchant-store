@@ -1,16 +1,21 @@
 import styled from "styled-components";
 // @ts-ignore
 import CouponBadge from "../assets/Star.png";
-import { useState } from "react";
 
 interface Props {
   rating: number;
   amount: string;
   isLastUnit: boolean;
+
+  onClick(): void;
 }
 
-export default function FeaturedCoupons({ rating, amount, isLastUnit }: Props) {
-  const [modal, setModal] = useState(false);
+export default function FeaturedCoupons({
+  rating,
+  amount,
+  isLastUnit,
+  onClick,
+}: Props) {
   const CouponWrapper = styled.div`
     margin-right: ${() => (isLastUnit ? 0 : "25px")};
     min-width: 258px;
@@ -31,7 +36,7 @@ export default function FeaturedCoupons({ rating, amount, isLastUnit }: Props) {
         </CouponDescription>
       </CouponTopWrapper>
       <CouponBottomWrapper>
-        <button onClick={() => setModal(!modal)}>+ 쿠폰 발행하기</button>
+        <button onClick={onClick}>+ 쿠폰 발행하기</button>
       </CouponBottomWrapper>
     </CouponWrapper>
   );

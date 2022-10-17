@@ -1,27 +1,42 @@
 import styled, { css } from "styled-components";
 import { useState } from "react"; // @ts-ignore
-import CouponBadge from "./assets/Star.png"; // @ts-ignore
 import ChevronIcon from "./assets/bx-chevron-down.svg";
 import IssueCouponModal from "./components/issueCouponModal";
-import FeaturedCoupons from "./components/featuredCoupons";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import BannerImage from "./components/BannerImage";
-import Slider from "react-slick";
+import BannerImage from "./components/bannerImage";
+import FeaturedCoupons from "./components/featuredCoupons";
 import { mobile } from "../../components/styles/devices";
+import Slider from "react-slick";
 
 export default function CouponManage() {
   const [dropdown, setDropdown] = useState(false);
   const [featuredCoupons, setFeaturedCoupons] = useState(true);
   const [modal, setModal] = useState(false);
 
+  const Settings = {
+    dots: true,
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    variableWidth: true,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    centerMode: true,
+    centerPadding: "0",
+    arrows: false,
+    responsive: [],
+  };
+
   const Dropdown = styled.div`
     button {
+      position: relative;
       display: flex;
       justify-content: space-between;
       width: 100%;
       height: auto;
       padding: 16px 30px 16px 15px;
+      box-sizing: border-box;
       border: 1px solid rgb(206, 212, 218);
       border-radius: 0;
       background: #ffffff;
@@ -37,10 +52,11 @@ export default function CouponManage() {
           `;
         }
       }}
+      position: absolute;
       width: 100%;
+      max-height: 300px;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
       border-width: 0 1px 1px 1px;
       border-style: none solid solid;
       border-left: rgb(221, 221, 221);
@@ -50,6 +66,7 @@ export default function CouponManage() {
       list-style: none;
       font-size: 14px;
       color: #111111;
+      z-index: 10;
 
       li {
         padding: 14px 16px;
@@ -62,29 +79,29 @@ export default function CouponManage() {
       }
     }
   `;
+  const FeaturedCouponsButton = styled.img`
+    transition: all 0.2s ease 0s;
+    ${() => {
+      if (featuredCoupons) {
+        return css`
+          transform: rotate(180deg);
+        `;
+        return css`
+          transform: rotate(0deg);
+        `;
+      }
+    }}
+  `;
 
-  const Settings = {
-    dots: true,
-    infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    variableWidth: true,
-    autoplay: true,
-    autoplaySpeed: 4000,
-    centerMode: true,
-    centerPadding: "0",
-    arrows: false,
-    responsive: [],
-  };
   return (
     <>
-      {modal && <IssueCouponModal />}
+      {modal && <IssueCouponModal isModalOn={modal} />}
       <Main>
         <div className="section">
           <div className="sectionWrapper">
             <PageTitle>
               <span>쿠폰 관리</span>
-              <button>쿠폰 발행하기</button>
+              <button onClick={() => setModal(!modal)}>쿠폰 발행하기</button>
             </PageTitle>
             <Dropdown>
               <button onClick={() => setDropdown(!dropdown)}>
@@ -101,9 +118,18 @@ export default function CouponManage() {
             <div>
               <ImageSlider>
                 <SliderWrapper {...Settings}>
-                  <BannerImage />
-                  <BannerImage />
-                  <BannerImage />
+                  <BannerImage
+                    title={`쿠폰을 본 고객은 \n 클릭할 가능성이 약 1.6배 높아지고 \n 구매로 이어질 확률이 1.5배 높아집니다`}
+                    description={`(2022.1.~3. 할인쿠폰을 7일 이상 노출한 매장 기준) \n 기간 및 노출 조건에 따라 변동될 수 있습니다.`}
+                  />
+                  <BannerImage
+                    title={`쿠폰은 고객의 매장 방문 증가와 \n 구매 전환에 효과적입니다`}
+                    description={`특히 쿠폰은 주문을 고민하는 \n 고객의 구매 결정에 도움이 됩니다.`}
+                  />
+                  <BannerImage
+                    title={`쿠폰 발행수를 설정 할 수 있어 \n 계획적인 쿠폰 관리가 가능합니다`}
+                    description={`계획한 만큼만 쿠폰을 발행할 수 있고 \n 활성화 스위치로 쉽게 쿠폰 이벤트를 관리할 수 있습니다.`}
+                  />
                 </SliderWrapper>
               </ImageSlider>
               <IssuedCoupon>발행된 쿠폰이 없습니다.</IssuedCoupon>
@@ -118,7 +144,7 @@ export default function CouponManage() {
                   >
                     {featuredCoupons ? "접기" : "펼치기"}
                   </span>
-                  <img src={ChevronIcon} />
+                  <FeaturedCouponsButton src={ChevronIcon} />
                 </div>
               </CouponTitleWrapper>
               <Coupons>
@@ -128,16 +154,19 @@ export default function CouponManage() {
                       rating={1}
                       amount="2,000"
                       isLastUnit={false}
+                      onClick={() => setModal(!modal)}
                     />
                     <FeaturedCoupons
                       rating={2}
                       amount="3,000"
                       isLastUnit={false}
+                      onClick={() => setModal(!modal)}
                     />
                     <FeaturedCoupons
                       rating={3}
                       amount="4,000"
                       isLastUnit={true}
+                      onClick={() => setModal(!modal)}
                     />
                   </>
                 )}
@@ -186,6 +215,9 @@ const Main = styled.main`
   flex-grow: 1;
   padding: 0 0 43px 42px;
   font-family: "Noto Sans CJK KR";
+  @media only screen and (max-width: ${mobile}) {
+    padding-left: 0;
+  }
 
   .section {
     width: 100%;
@@ -193,6 +225,9 @@ const Main = styled.main`
 
   .sectionWrapper {
     max-width: 835px;
+    @media only screen and (max-width: ${mobile}) {
+      padding: 0 20px;
+    }
   }
 
   aside {
@@ -229,6 +264,10 @@ const Main = styled.main`
         margin-bottom: 20px;
         color: #555555;
         font-weight: 400;
+      }
+
+      p {
+        line-height: 19px;
       }
 
       a {
@@ -327,9 +366,4 @@ const CouponTitleWrapper = styled.div`
     font-size: 14px;
     vertical-align: top;
   }
-
-  //img {
-  //  transition: all 0.2s ease 0s;
-  //  transform: rotate(180deg);
-  //}
 `;

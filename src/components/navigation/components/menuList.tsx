@@ -29,24 +29,14 @@ export default function MenuList({
     height: 8px;
     background: #ff0000;
     border-radius: 4px;
-
-    ${() => {
-      if (isNew) {
-        return css`
-          opacity: 100%;
-        `;
-      }
-      return css`
-        opacity: 0%;
-      `;
-    }}
+    opacity: ${isNew ? "100%" : "0"};
   `;
   const ListWrapper = styled.li`
     a {
       display: block;
       width: 100%;
       padding: 15px 25px;
-      box-sizing: border-box;
+      box-sizing: border - box;
       text-decoration-line: none;
       font-size: 16px;
       color: #111111;
