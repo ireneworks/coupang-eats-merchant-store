@@ -1,18 +1,20 @@
-// @ts-ignore
 import ProfileIcon from "../layout/assets/icon-profile.png";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { tablet } from "../styles/devices";
 
 export default function PageHeader() {
   const navigate = useNavigate();
+  const [menu, setMenu] = useState(false);
 
   return (
     <HeaderWrapper>
       <ToBackButton onClick={() => navigate(-1)} />
-      <HamburgerMenu />
+      <HamburgerMenu onClick={() => setMenu(!menu)} />
       <RightSide>
         <div>
-          <img src={ProfileIcon} />
+          <img src={ProfileIcon} alt="프로필 아이콘" />
           <span>쿠팡이츠 점주님</span>
         </div>
         <FaqLink>
@@ -34,27 +36,28 @@ const HeaderWrapper = styled.header`
   box-sizing: border-box;
 `;
 
-const ToBackButton = styled.div`
-  display: none;
+const ToBackButton = styled.button`
+  display: block;
   width: 32px;
   height: 32px;
-  border: 1px solid #888888;
+  border: 1px solid #dddddd;
   border-radius: 8px;
+  background: #ffffff;
 
-  @media screen and (min-width: 767px) {
-    display: block;
+  @media screen and (max-width: ${tablet}) {
+    display: none;
   }
 `;
 
-const HamburgerMenu = styled.div`
-  display: block;
+const HamburgerMenu = styled.button`
+  display: none;
   width: 32px;
   height: 32px;
   background: #168350;
   border-radius: 28px;
 
-  @media screen and (min-width: 767px) {
-    display: none;
+  @media screen and (max-width: ${tablet}) {
+    display: block;
   }
 `;
 
@@ -79,11 +82,12 @@ const RightSide = styled.div`
 `;
 
 const FaqLink = styled.div`
+  margin-left: 20px;
+
   a {
     display: inline-block;
     width: 100px;
     height: 40px;
-    margin-left: 20px;
     padding: 10px;
     box-sizing: border-box;
     border: 1px solid #aaaaaa;

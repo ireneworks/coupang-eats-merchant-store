@@ -43,6 +43,7 @@ const QuickMenuListWrapper = styled.li`
       margin: 0;
       vertical-align: top;
       line-height: 1.8;
+      color: #111111;
     }
   }
 `;

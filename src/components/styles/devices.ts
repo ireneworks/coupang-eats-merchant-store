@@ -1,1 +1,2 @@
-export const mobile = "767px";
+export const tablet = "767px";
+export const mobile = "576px";

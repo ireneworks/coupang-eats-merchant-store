@@ -6,14 +6,14 @@ import NoticeIcon from "./assets/icon-notice-off@2x.png";
 import PromotionOffIcon from "./assets/icon_promotion_off.png";
 import PromotionOnIcon from "./assets/icon_promotion_on.png";
 import ComputerIcon from "./assets/icon-computer.png";
-import { mobile } from "../styles/devices";
+import { tablet } from "../styles/devices";
 
 export default function Navigation() {
   return (
     <Wrapper>
       <LogoWrapper>
         <a href="/">
-          <img src={Logo} />
+          <img src={Logo} alt="쿠팡이츠 포탈" />
         </a>
       </LogoWrapper>
       <div>
@@ -58,7 +58,7 @@ export default function Navigation() {
         </MenuWrapper>
         <QuickMenuWrapper>
           <div>
-            <span>주문접수 프로그램</span>
+            <strong>주문접수 프로그램</strong>
             <ul>
               <QuickMenuList
                 imageSrc={ComputerIcon}
@@ -73,7 +73,7 @@ export default function Navigation() {
             </ul>
           </div>
           <div>
-            <span>사장님 이용가이드</span>
+            <strong>사장님 이용가이드</strong>
             <ul>
               <QuickMenuList
                 imageSrc={ComputerIcon}
@@ -93,6 +93,7 @@ export default function Navigation() {
   );
 }
 
+//TODO nav 반응형
 const Wrapper = styled.nav`
   position: fixed;
   top: 0;
@@ -101,9 +102,9 @@ const Wrapper = styled.nav`
   padding-top: 3px;
   width: 215px;
   background: #ffffff;
-  box-shadow: rgb(0 0 0 / 15%) 1px 0px 3px 0px;
-  overflow: scroll;
-  @media screen and (max-width: ${mobile}) {
+  box-shadow: rgb(0 0 0 / 15%) 1px 0 3px 0;
+  overflow-x: hidden;
+  @media screen and (max-width: ${tablet}) {
     transform: translateX(-100vw);
   }
 `;
@@ -127,16 +128,15 @@ const MenuWrapper = styled.ul`
 
 const QuickMenuWrapper = styled.div`
   margin: 32px 20px;
+  font-size: 14px;
+  color: #111111;
 
   div {
     margin-bottom: 32px;
 
-    span {
-      display: inline-block;
+    strong {
+      display: block;
       margin-bottom: 16px;
-      font-size: 14px;
-      font-weight: 700;
-      color: #111111;
     }
 
     ul {

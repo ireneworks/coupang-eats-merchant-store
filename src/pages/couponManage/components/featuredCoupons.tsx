@@ -1,5 +1,4 @@
 import styled from "styled-components";
-// @ts-ignore
 import CouponBadge from "../assets/Star.png";
 
 interface Props {
@@ -16,20 +15,15 @@ export default function FeaturedCoupons({
   isLastUnit,
   onClick,
 }: Props) {
-  const CouponWrapper = styled.div`
-    margin-right: ${() => (isLastUnit ? 0 : "25px")};
-    min-width: 258px;
-  `;
-
   return (
-    <CouponWrapper>
+    <CouponWrapper isLastUnit={isLastUnit}>
       <CouponTopWrapper>
         <CouponBadgeWrapper>{rating}위</CouponBadgeWrapper>
         <div>
           <CouponTag>배달•포장</CouponTag>
-          <span>매장명과 쿠폰이름</span>
+          <dt>매장명과 쿠폰이름</dt>
         </div>
-        <CouponAmount>{amount}원 할인</CouponAmount>
+        <dd>{amount}원 할인</dd>
         <CouponDescription>
           <span>최소 주문금액 이상 주문 시</span>
           <span>종료일</span>
@@ -42,59 +36,31 @@ export default function FeaturedCoupons({
   );
 }
 
-const CouponBottomWrapper = styled.div`
-  height: 40px;
-  margin-top: -1px;
-  text-align: center;
-  background: rgb(248, 248, 248);
+const CouponWrapper = styled.div<{ isLastUnit: boolean }>`
+  margin-right: ${(props) => (props.isLastUnit ? 0 : "25px")};
+  min-width: 258px;
+`;
+
+const CouponTopWrapper = styled.div`
+  position: relative;
+  background: #ffffff;
+  padding: 24px;
   border: 1px solid rgb(221, 221, 221);
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-  box-sizing: border-box;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 
-  button {
-    cursor: pointer;
-    width: 100%;
-    height: 100%;
-    border: none;
-    background: none;
-    color: #555555;
-    font-size: 14px;
-    font-weight: 500;
-    vertical-align: top;
-  }
-`;
-
-const CouponAmount = styled.div`
-  margin: 8px 0;
-  color: rgb(1, 175, 255);
-  font-size: 28px;
-  line-height: 28px;
-  font-weight: bold;
-`;
-
-const CouponDescription = styled.div`
-  display: flex;
-  justify-content: space-between;
-  font-size: 12px;
-  font-weight: 500;
-  color: rgb(145, 158, 171);
-`;
-
-const CouponTag = styled.span`
-  display: inline-block;
-  margin-right: 8px;
-  padding: 3px 5px 2px;
-  background: rgb(33, 43, 54);
-  border-radius: 4px;
-  color: #ffffff;
-  font-size: 12px;
-  font-weight: 700;
-
-  + span {
+  dt {
     display: inline-block;
     color: rgb(33, 43, 54);
     font-size: 13px;
+    font-weight: bold;
+  }
+
+  dd {
+    margin: 8px 0;
+    color: rgb(1, 175, 255);
+    font-size: 28px;
+    line-height: 28px;
     font-weight: bold;
   }
 `;
@@ -117,11 +83,44 @@ const CouponBadgeWrapper = styled.div`
   color: #ffffff;
 `;
 
-const CouponTopWrapper = styled.div`
-  position: relative;
-  background: #ffffff;
-  padding: 24px;
+const CouponTag = styled.span`
+  display: inline-block;
+  margin-right: 8px;
+  padding: 2px 5px;
+  background: rgb(33, 43, 54);
+  border-radius: 4px;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+`;
+
+const CouponDescription = styled.div`
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgb(145, 158, 171);
+`;
+
+const CouponBottomWrapper = styled.div`
+  height: 40px;
+  margin-top: -1px;
+  text-align: center;
+  background: rgb(248, 248, 248);
   border: 1px solid rgb(221, 221, 221);
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  box-sizing: border-box;
+
+  button {
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: none;
+    color: #555555;
+    font-size: 14px;
+    font-weight: 500;
+    vertical-align: top;
+  }
 `;
