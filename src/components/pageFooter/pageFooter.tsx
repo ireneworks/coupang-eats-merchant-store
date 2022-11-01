@@ -4,36 +4,36 @@ import { tablet } from "../styles/devices";
 export default function PageFooter() {
   return (
     <FooterWrapper>
-      <ShortCut>
-        <span>
+      <ul>
+        <li>
           <a href="#">쿠팡이츠 서비스 이용약관</a>
-        </span>
-        <span>
+        </li>
+        <li>
           <a href="#">쿠팡이츠 부속약관</a>
-        </span>
-        <span>
+        </li>
+        <li>
           <a href="#">쿠팡페이 전자금융거래약관</a>
-        </span>
-        <span>
+        </li>
+        <li>
           <a href="#">쿠팡개인정보 처리방침</a>
-        </span>
-        <span>
+        </li>
+        <li>
           <a href="#">쿠팡이츠 서비스요금 안내</a>
-        </span>
-      </ShortCut>
-      <FooterContent>
-        <span> 상호명 및 호스팅 서비스 제공: 쿠팡(주)</span>
-        <span>대표이사: 박대준</span>
-        <span>주소: 서울시송파구 송파대로 570</span>
-        <span>사업자 등록번호 : 120-88-00767</span>
-        <span>
-          <LinkButton href="#">사업자정보확인</LinkButton>
-        </span>
-        <span>통신판매업신고 : 2017-서울송파-0680</span>
-        <span>고객센터 : 1600-9827</span>
-        <span>이메일 : eatspartners@coupang.com</span>
-        <span>메뉴 정보 수정 : menu@coupang.com</span>
-      </FooterContent>
+        </li>
+      </ul>
+      <ul>
+        <li className="sub-content"> 상호명 및 호스팅 서비스 제공: 쿠팡(주)</li>
+        <li className="sub-content">대표이사: 박대준</li>
+        <li className="sub-content">주소: 서울시송파구 송파대로 570</li>
+        <li className="sub-content">사업자 등록번호 : 120-88-00767</li>
+        <li>
+          <a href="#">사업자정보확인</a>
+        </li>
+        <li className="sub-content">통신판매업신고 : 2017-서울송파-0680</li>
+        <li className="sub-content">고객센터 : 1600-9827</li>
+        <li className="sub-content">이메일 : eatspartners@coupang.com</li>
+        <li className="sub-content">메뉴 정보 수정 : menu@coupang.com</li>
+      </ul>
     </FooterWrapper>
   );
 }
@@ -43,83 +43,60 @@ const FooterWrapper = styled.footer`
   box-sizing: border-box;
   border-top: 1px solid #aaaaaa;
   font-size: 12px;
-`;
 
-const ShortCut = styled.div`
-  display: block;
-  margin-bottom: 11px;
-  line-height: 25px;
-  word-break: keep-all;
+  ul {
+    display: block;
+    list-style: none;
+    margin: 0 0 11px 0;
+    padding: 0;
+    line-height: 25px;
+    word-break: keep-all;
 
-  span {
-    position: relative;
-    padding-right: 8px;
-    margin-right: 8px;
+    li {
+      position: relative;
+      display: inline-block;
+      padding-right: 9px;
+      margin-right: 8px;
 
-    &::after {
-      display: block;
-      width: 1px;
-      height: 12px;
-      position: absolute;
-      right: 0;
-      top: 4px;
-      background: #a3a3a3;
-      content: "";
+      &::after {
+        position: absolute;
+        display: block;
+        width: 1px;
+        height: 15px;
+        right: 0;
+        top: 6px;
+        background: #a3a3a3;
+        content: "";
+      }
+
+      &:last-child::after {
+        display: none;
+      }
+
+      a {
+        text-decoration-line: none;
+        font-weight: 700;
+        margin-bottom: 11px;
+        color: #555555;
+      }
     }
 
-    &:last-child::after {
-      display: none;
-    }
-  }
+    li.sub-content {
+      color: #888888;
+      font-weight: 400;
+      line-height: 23px;
+      vertical-align: bottom;
+      word-break: keep-all;
 
-  a {
-    text-decoration-line: none;
-    font-weight: 700;
-    margin-bottom: 11px;
-    color: #555555;
-  }
-`;
+      &::after {
+        @media screen and (max-width: ${tablet}) {
+          display: none;
+        }
+      }
 
-const FooterContent = styled.div`
-  max-width: 1100px;
-  color: #888888;
-  font-weight: 400;
-  line-height: 23px;
-  vertical-align: bottom;
-  word-break: keep-all;
-
-  span {
-    position: relative;
-    padding-right: 8px;
-    margin-right: 8px;
-
-    &::after {
-      display: block;
-      width: 1px;
-      height: 10px;
-      position: absolute;
-      right: 0;
-      top: 5px;
-      background: #a3a3a3;
-      content: "";
-    }
-
-    &:last-child::after {
-      display: none;
+      @media screen and (max-width: ${tablet}) {
+        display: block;
+      }
     }
   }
-
-  @media only screen and (max-width: ${tablet}) {
-    span {
-      display: block;
-      width: 100%;
-    }
-  }
-`;
-
-const LinkButton = styled.a`
-  margin-left: 4px;
-  text-decoration-line: none;
-  font-weight: 500;
-  color: #555555;
 `;

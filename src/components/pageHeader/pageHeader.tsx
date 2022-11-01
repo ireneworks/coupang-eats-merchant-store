@@ -10,16 +10,11 @@ export default function PageHeader() {
 
   return (
     <HeaderWrapper>
-      <ToBackButton onClick={() => navigate(-1)} />
-      <HamburgerMenu onClick={() => setMenu(!menu)} />
+      <DesktopButton onClick={() => navigate(-1)} />
+      <MobileButton onClick={() => setMenu(!menu)} />
       <RightSide>
-        <div>
-          <img src={ProfileIcon} alt="프로필 아이콘" />
-          <span>쿠팡이츠 점주님</span>
-        </div>
-        <FaqLink>
-          <a href="https://eats.coupang.com/hc/ko">도움말</a>
-        </FaqLink>
+        <button>쿠팡이츠 점주님</button>
+        <a href="https://eats.coupang.com/hc/ko">도움말</a>
       </RightSide>
     </HeaderWrapper>
   );
@@ -36,25 +31,28 @@ const HeaderWrapper = styled.header`
   box-sizing: border-box;
 `;
 
-const ToBackButton = styled.button`
+const DesktopButton = styled.button`
   display: block;
   width: 32px;
   height: 32px;
   border: 1px solid #dddddd;
   border-radius: 8px;
   background: #ffffff;
+  cursor: pointer;
 
   @media screen and (max-width: ${tablet}) {
     display: none;
   }
 `;
 
-const HamburgerMenu = styled.button`
+const MobileButton = styled.button`
   display: none;
   width: 32px;
   height: 32px;
   background: #168350;
   border-radius: 28px;
+  border: none;
+  cursor: pointer;
 
   @media screen and (max-width: ${tablet}) {
     display: block;
@@ -66,28 +64,23 @@ const RightSide = styled.div`
   align-content: center;
   vertical-align: center;
 
-  div {
-    img {
-      width: 40px;
-      height: 40px;
-      margin-right: 6px;
-    }
-
-    span {
-      color: #111111;
-      vertical-align: top;
-      line-height: 2.6;
-    }
+  button {
+    padding: 0 8px 0 50px;
+    background: transparent url(${ProfileIcon}) left 2px bottom 0 / 40px
+      no-repeat;
+    font-size: 14px;
+    font-weight: 500;
+    color: #111111;
+    vertical-align: top;
+    line-height: 2.6;
+    border: none;
+    cursor: pointer;
   }
-`;
-
-const FaqLink = styled.div`
-  margin-left: 20px;
 
   a {
-    display: inline-block;
     width: 100px;
     height: 40px;
+    margin-left: 20px;
     padding: 10px;
     box-sizing: border-box;
     border: 1px solid #aaaaaa;
