@@ -1,6 +1,7 @@
 import BannerImage from "./bannerImage";
 import styled from "styled-components";
 import Slider from "react-slick";
+import { mobile } from "../../../components/styles/devices";
 
 export default function ImageSlider() {
   const Settings = {
@@ -47,10 +48,28 @@ const ImageSliderWrapper = styled.div`
 `;
 
 const SliderWrapper = styled(Slider)`
+  position: relative;
   width: 600px;
 
-  //TODO 디자인 맞추기
   .indicator {
-    bottom: 30px;
+    position: absolute;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    top: 180px;
+    right: 270px;
+
+    li {
+      display: inline-block;
+
+      button {
+        border: none;
+        background: none;
+
+        @media only screen and (max-width: ${mobile}) {
+          display: none;
+        }
+      }
+    }
   }
 `;

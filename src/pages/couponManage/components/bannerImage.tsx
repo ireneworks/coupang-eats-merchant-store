@@ -23,6 +23,7 @@ const BannerImageWrapper = styled.div`
   display: flex;
   flex-flow: row wrap;
   max-width: 600px;
+  margin: 0 20px;
 
   @media screen and (max-width: ${mobile}) {
     flex-flow: column;

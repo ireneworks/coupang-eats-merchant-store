@@ -100,11 +100,15 @@ const Main = styled.main`
     width: 100%;
     padding: 40px 0 40px 40px;
 
+    @media screen and (max-width: ${tablet}) {
+      padding: 0;
+    }
+
     .sectionWrapper {
       max-width: 835px;
 
-      @media only screen and (max-width: ${tablet}) {
-        padding: 0 20px;
+      @media screen and (max-width: ${tablet}) {
+        padding: 40px 20px;
       }
     }
 
