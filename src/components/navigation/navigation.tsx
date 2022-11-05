@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import MenuList from "./components/menuList";
-import QuickMenuList from "./components/quickMenuList";
+import MenuItem from "./components/menuItem";
+import QuickMenuItem from "./components/quickMenuList";
 import Logo from "./assets/logo.png";
 import NoticeIcon from "./assets/icon-notice-off@2x.png";
 import PromotionOffIcon from "./assets/icon_promotion_off.png";
@@ -16,21 +16,21 @@ export default function Navigation() {
     <Wrapper>
       <button className="logo-wrapper" onClick={() => navigate("/")} />
       <MenuWrapper>
-        <MenuList
+        <MenuItem
           disabledIconUrl={NoticeIcon}
           activeIconUrl={NoticeIcon}
           hrefLink="#"
           menuTitle="공지사항"
           isNew={false}
         />
-        <MenuList
+        <MenuItem
           disabledIconUrl={NoticeIcon}
           activeIconUrl={NoticeIcon}
           hrefLink="#"
           menuTitle="광고관리"
           isNew={true}
         />
-        <MenuList
+        <MenuItem
           disabledIconUrl={PromotionOffIcon}
           activeIconUrl={PromotionOnIcon}
           hrefLink="/merchant/management/coupons/"
@@ -42,12 +42,12 @@ export default function Navigation() {
         <section>
           <strong>주문접수 프로그램</strong>
           <ul>
-            <QuickMenuList
+            <QuickMenuItem
               imageSrc={ComputerIcon}
               hrefLink="https://play.google.com/store/apps/details?id=com.coupang.mobile.eats.merchant&hl=ko"
               menuTitle="휴대폰 앱 설치"
             />
-            <QuickMenuList
+            <QuickMenuItem
               imageSrc={ComputerIcon}
               hrefLink="#"
               menuTitle="POS 설치"
@@ -57,12 +57,12 @@ export default function Navigation() {
         <section>
           <strong>사장님 이용가이드</strong>
           <ul>
-            <QuickMenuList
+            <QuickMenuItem
               imageSrc={ComputerIcon}
               hrefLink="https://eats.coupang.com/hc/ko/sections/900000801146"
               menuTitle="약관 및 정책"
             />
-            <QuickMenuList
+            <QuickMenuItem
               imageSrc={ComputerIcon}
               hrefLink="https://store.coupangeats.com/resources/20220929090527/files/Merchant%20FAQs.pdf"
               menuTitle="FAQ 보기"
@@ -74,7 +74,6 @@ export default function Navigation() {
   );
 }
 
-//TODO nav 반응형
 const Wrapper = styled.nav`
   position: fixed;
   top: 0;

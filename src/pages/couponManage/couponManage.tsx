@@ -4,7 +4,7 @@ import ChevronIcon from "./assets/bx-chevron-down.svg";
 import IssueCouponModal from "./components/issueCouponModal";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import FeaturedCoupons from "./components/featuredCoupons";
+import FeaturedCouponItem from "./components/featuredCouponItem";
 import { tablet } from "../../components/styles/devices";
 import DropDown from "./components/dropDown";
 import ImageSlider from "./components/imageSlider";
@@ -37,17 +37,17 @@ export default function CouponManage() {
               <Coupons>
                 {featuredCoupons && (
                   <>
-                    <FeaturedCoupons
+                    <FeaturedCouponItem
                       rating={1}
                       amount="2,000"
                       onClick={() => setModal(!modal)}
                     />
-                    <FeaturedCoupons
+                    <FeaturedCouponItem
                       rating={2}
                       amount="3,000"
                       onClick={() => setModal(!modal)}
                     />
-                    <FeaturedCoupons
+                    <FeaturedCouponItem
                       rating={3}
                       amount="4,000"
                       onClick={() => setModal(!modal)}
@@ -74,18 +74,21 @@ export default function CouponManage() {
           </div>
         </section>
         <aside>
-          <ul>
-            <li>
+          <div>
+            <dl>
               <dt>매출을 올리는 쿠폰 발행 TIP</dt>
               <dd>
                 매장에 유치하려는 고객에 맞춰 쿠폰을 발행해보세요. (예: 첫 주문
                 고객 2,000원 할인 쿠폰)
               </dd>
-              <a href="https://eats.coupang.com/hc/ko/articles/6157144757401">
-                쿠폰 발행 가이드
-              </a>
-            </li>
-          </ul>
+            </dl>
+            <a
+              href="https://eats.coupang.com/hc/ko/articles/6157144757401"
+              target="_blank" rel="noreferrer"
+            >
+              쿠폰 발행 가이드
+            </a>
+          </div>
         </aside>
       </Main>
     </>
@@ -131,7 +134,7 @@ const Main = styled.main`
     background: #f8f8f8;
     box-sizing: border-box;
 
-    ul {
+    div {
       width: 100%;
       margin: 0;
       background: #ffffff;
@@ -143,7 +146,6 @@ const Main = styled.main`
       font-weight: 700;
       line-height: 17px;
       color: #555555;
-      list-style: none;
 
       dd {
         margin: 12px 0 20px 0;

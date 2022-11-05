@@ -8,10 +8,10 @@ interface Props {
   onClick(): void;
 }
 
-export default function FeaturedCoupons({ rating, amount, onClick }: Props) {
+export default function FeaturedCouponItem({ rating, amount, onClick }: Props) {
   return (
     <CouponWrapper>
-      <header>
+      <dl>
         <div className="badge-wrapper">{rating}위</div>
         <div>
           <span className="tag-wrapper">배달•포장</span>
@@ -19,10 +19,12 @@ export default function FeaturedCoupons({ rating, amount, onClick }: Props) {
         </div>
         <dd>{amount}원 할인</dd>
         <CouponDescription>
-          <span>최소 주문금액 이상 주문 시</span>
-          <span>종료일</span>
+          <dd className="minimum-cost-description">
+            최소 주문금액 이상 주문 시
+          </dd>
+          <dd className="minimum-cost-description">종료일</dd>
         </CouponDescription>
-      </header>
+      </dl>
       <button onClick={onClick}>+ 쿠폰 발행하기</button>
     </CouponWrapper>
   );
@@ -32,9 +34,10 @@ const CouponWrapper = styled.li`
   margin-right: 25px;
   min-width: 258px;
 
-  header {
+  dl {
     position: relative;
     background: #ffffff;
+    margin: 0;
     padding: 24px;
     border: 1px solid rgb(221, 221, 221);
     border-top-left-radius: 8px;
@@ -81,7 +84,7 @@ const CouponWrapper = styled.li`
       font-weight: bold;
     }
   }
-  
+
   button {
     width: 100%;
     height: 40px;
@@ -103,7 +106,11 @@ const CouponWrapper = styled.li`
 const CouponDescription = styled.div`
   display: flex;
   justify-content: space-between;
-  font-size: 12px;
-  font-weight: 500;
-  color: rgb(145, 158, 171);
+
+  dd.minimum-cost-description {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 500;
+    color: #888888;
+  }
 `;

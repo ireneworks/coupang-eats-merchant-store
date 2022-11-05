@@ -13,7 +13,9 @@ export default function QuickMenuList({
 }: Props) {
   return (
     <QuickMenuListWrapper imageSrc={imageSrc}>
-      <a href={`${hrefLink}`}>{menuTitle}</a>
+      <a href={`${hrefLink}`} target="_blank" rel="noreferrer">
+        {menuTitle}
+      </a>
     </QuickMenuListWrapper>
   );
 }

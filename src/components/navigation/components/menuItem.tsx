@@ -9,7 +9,7 @@ interface Props {
   isNew: boolean;
 }
 
-export default function MenuList({
+export default function MenuItem({
   disabledIconUrl,
   activeIconUrl,
   hrefLink,
