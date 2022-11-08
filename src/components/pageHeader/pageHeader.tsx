@@ -14,7 +14,13 @@ export default function PageHeader() {
       <MobileButton onClick={() => setMenu(!menu)} />
       <RightSide>
         <button>쿠팡이츠 점주님</button>
-        <a href="https://eats.coupang.com/hc/ko">도움말</a>
+        <a
+          href="https://eats.coupang.com/hc/ko"
+          target="_blank"
+          rel="noreferrer"
+        >
+          도움말
+        </a>
       </RightSide>
     </HeaderWrapper>
   );

@@ -1,14 +1,11 @@
 import styled from "styled-components";
+import { useState } from "react";
 
-interface Props {
-  dropDown: boolean;
+export default function DropDown() {
+  const [dropDown, setDropDown] = useState(false);
 
-  setDropDown(value: boolean): void;
-}
-
-export default function DropDown({ dropDown, setDropDown }: Props) {
   return (
-    <Dropdown dropDown={dropDown}>
+    <DropDownWrapper dropDown={dropDown}>
       <button onClick={() => setDropDown(!dropDown)}>
         <span>전체</span>
         <span>열기</span>
@@ -18,20 +15,20 @@ export default function DropDown({ dropDown, setDropDown }: Props) {
           <button>전체</button>
         </li>
         <li>
-          <button>1,000원 할인쿠폰</button>
+          <button>스토어 1</button>
         </li>
         <li>
-          <button>2,000원 할인쿠폰</button>
+          <button>스토어 2</button>
         </li>
         <li>
-          <button>3,000원 할인쿠폰</button>
+          <button>스토어 3</button>
         </li>
       </ul>
-    </Dropdown>
+    </DropDownWrapper>
   );
 }
 
-const Dropdown = styled.div<{ dropDown: boolean }>`
+const DropDownWrapper = styled.div<{ dropDown: boolean }>`
   position: relative;
 
   button {

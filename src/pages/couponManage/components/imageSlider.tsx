@@ -1,7 +1,7 @@
-import BannerImage from "./bannerImage";
 import styled from "styled-components";
 import Slider from "react-slick";
 import { mobile } from "../../../components/styles/devices";
+import ImageBanner from "../assets/Banner_img_01.png";
 
 export default function ImageSlider() {
   const Settings = {
@@ -11,7 +11,7 @@ export default function ImageSlider() {
     slidesToScroll: 1,
     variableWidth: true,
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 10000,
     centerMode: true,
     centerPadding: "0",
     arrows: false,
@@ -19,26 +19,44 @@ export default function ImageSlider() {
   };
 
   return (
-    <ImageSliderWrapper>
+    <Container>
       <SliderWrapper {...Settings}>
-        <BannerImage
-          title={`쿠폰을 본 고객은 \n 클릭할 가능성이 약 1.6배 높아지고 \n 구매로 이어질 확률이 1.5배 높아집니다`}
-          description={`(2022.1.~3. 할인쿠폰을 7일 이상 노출한 매장 기준) \n 기간 및 노출 조건에 따라 변동될 수 있습니다.`}
-        />
-        <BannerImage
-          title={`쿠폰은 고객의 매장 방문 증가와 \n 구매 전환에 효과적입니다`}
-          description={`특히 쿠폰은 주문을 고민하는 \n 고객의 구매 결정에 도움이 됩니다.`}
-        />
-        <BannerImage
-          title={`쿠폰 발행수를 설정 할 수 있어 \n 계획적인 쿠폰 관리가 가능합니다`}
-          description={`계획한 만큼만 쿠폰을 발행할 수 있고 \n 활성화 스위치로 쉽게 쿠폰 이벤트를 관리할 수 있습니다.`}
-        />
+        <BannerContentWrapper>
+          <img
+            src={ImageBanner}
+            alt="쿠팡이츠 앱 내 쿠폰을 확인할 수 있습니다."
+          />
+          <dl>
+            <dt>{`쿠폰은 고객의 매장 방문 증가와 \n 구매 전환에 효과적입니다`}</dt>
+            <dd>{`특히 쿠폰은 주문을 고민하는 \n 고객의 구매 결정에 도움이 됩니다.`}</dd>
+          </dl>
+        </BannerContentWrapper>
+        <BannerContentWrapper>
+          <img
+            src={ImageBanner}
+            alt="쿠팡이츠 앱 내 쿠폰을 확인할 수 있습니다."
+          />
+          <dl>
+            <dt>{`쿠폰은 고객의 매장 방문 증가와 \n 구매 전환에 효과적입니다`}</dt>
+            <dd>{`특히 쿠폰은 주문을 고민하는 \n 고객의 구매 결정에 도움이 됩니다.`}</dd>
+          </dl>
+        </BannerContentWrapper>
+        <BannerContentWrapper>
+          <img
+            src={ImageBanner}
+            alt="쿠팡이츠 앱 내 쿠폰을 확인할 수 있습니다."
+          />
+          <dl>
+            <dt>{`쿠폰은 고객의 매장 방문 증가와 \n 구매 전환에 효과적입니다`}</dt>
+            <dd>{`특히 쿠폰은 주문을 고민하는 \n 고객의 구매 결정에 도움이 됩니다.`}</dd>
+          </dl>
+        </BannerContentWrapper>
       </SliderWrapper>
-    </ImageSliderWrapper>
+    </Container>
   );
 }
 
-const ImageSliderWrapper = styled.div`
+const Container = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
@@ -71,5 +89,51 @@ const SliderWrapper = styled(Slider)`
         }
       }
     }
+  }
+`;
+
+const BannerContentWrapper = styled.div`
+  display: flex;
+  max-width: 600px;
+  margin: 0 20px;
+
+  img {
+    width: 240px;
+    height: 240px;
+  }
+
+  dl {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    margin: 56px 0 0 8px;
+    line-height: 21px;
+
+    @media screen and (max-width: ${mobile}) {
+      width: 100%;
+      align-items: center;
+      text-align: center;
+    }
+
+    dt {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      white-space: pre-line;
+    }
+
+    dd {
+      margin: 0;
+      font-size: 14px;
+      color: rgb(85, 85, 85);
+      line-height: 20px;
+      white-space: pre-line;
+    }
+  }
+
+  @media screen and (max-width: ${mobile}) {
+    flex-flow: column;
+    width: 100%;
+    align-items: center;
   }
 `;

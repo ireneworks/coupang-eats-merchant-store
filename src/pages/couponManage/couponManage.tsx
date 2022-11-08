@@ -8,9 +8,9 @@ import FeaturedCouponItem from "./components/featuredCouponItem";
 import { tablet } from "../../components/styles/devices";
 import DropDown from "./components/dropDown";
 import ImageSlider from "./components/imageSlider";
+import StarIcon from "./assets/Star.png";
 
 export default function CouponManage() {
-  const [dropDown, setDropDown] = useState(false);
   const [featuredCoupons, setFeaturedCoupons] = useState(true);
   const [modal, setModal] = useState(false);
 
@@ -24,7 +24,7 @@ export default function CouponManage() {
               <h1>쿠폰 관리</h1>
               <button onClick={() => setModal(!modal)}>쿠폰 발행하기</button>
             </PageTitle>
-            <DropDown dropDown={dropDown} setDropDown={setDropDown} />
+            <DropDown />
             <ImageSlider />
             <p>발행된 쿠폰이 없습니다.</p>
             <FeaturedCoupon>
@@ -34,7 +34,7 @@ export default function CouponManage() {
                   {featuredCoupons ? "접기" : "펼치기"}
                 </span>
               </CouponTitleWrapper>
-              <Coupons>
+              <FeaturedCoupons>
                 {featuredCoupons && (
                   <>
                     <FeaturedCouponItem
@@ -54,7 +54,7 @@ export default function CouponManage() {
                     />
                   </>
                 )}
-              </Coupons>
+              </FeaturedCoupons>
               <CouponDisclaim>
                 <li>
                   생성하신 쿠폰은 수정이 불가하니 다운로드 비활성화 후 새로
@@ -84,7 +84,8 @@ export default function CouponManage() {
             </dl>
             <a
               href="https://eats.coupang.com/hc/ko/articles/6157144757401"
-              target="_blank" rel="noreferrer"
+              target="_blank"
+              rel="noreferrer"
             >
               쿠폰 발행 가이드
             </a>
@@ -137,7 +138,7 @@ const Main = styled.main`
     div {
       width: 100%;
       margin: 0;
-      background: #ffffff;
+      background: #ffffff url(${StarIcon}) left 20px top 30px / 30px no-repeat;
       padding: 60px 20px 20px 20px;
       border: 1px solid rgb(221, 221, 221);
       box-shadow: rgb(0 0 0 / 10 %) 1px 1px 3px 0;
@@ -218,7 +219,7 @@ const CouponTitleWrapper = styled.div<{ featuredCoupons: boolean }>`
   }
 `;
 
-const Coupons = styled.ul`
+const FeaturedCoupons = styled.ul`
   display: flex;
   margin-bottom: 50px;
   padding: 12px 0 0 12px;

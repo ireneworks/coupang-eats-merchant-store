@@ -13,7 +13,7 @@ export default function Navigation() {
   const navigate = useNavigate();
 
   return (
-    <Wrapper>
+    <Container>
       <button className="logo-wrapper" onClick={() => navigate("/")} />
       <MenuWrapper>
         <MenuItem
@@ -70,11 +70,11 @@ export default function Navigation() {
           </ul>
         </section>
       </QuickMenuWrapper>
-    </Wrapper>
+    </Container>
   );
 }
 
-const Wrapper = styled.nav`
+const Container = styled.nav`
   position: fixed;
   top: 0;
   left: 0;
