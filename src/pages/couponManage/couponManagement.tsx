@@ -10,7 +10,7 @@ import DropDown from "./components/dropDown";
 import ImageSlider from "./components/imageSlider";
 import StarIcon from "./assets/Star.png";
 
-export default function CouponManage() {
+export default function CouponManagement() {
   const [featuredCoupons, setFeaturedCoupons] = useState(true);
   const [modal, setModal] = useState(false);
 

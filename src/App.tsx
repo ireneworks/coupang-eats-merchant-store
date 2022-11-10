@@ -1,5 +1,5 @@
 import React from "react";
-import CouponManage from "./pages/couponManage/couponManage";
+import CouponManagement from "./pages/couponManage/couponManagement";
 import Navigation from "./components/navigation/navigation";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/home/home";
@@ -16,7 +16,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route
               path="/merchant/management/coupons/"
-              element={<CouponManage />}
+              element={<CouponManagement />}
             />
           </Routes>
         </PageLayout>
